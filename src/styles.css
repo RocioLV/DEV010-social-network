@@ -1,3 +1,16 @@
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Reduzca el ancho del contenedor para dispositivos móviles */
+  }
+}
+  /* Estilos para pantallas más grandes (escritorio, tablet, etc.) */
+@media (min-width: 769px) {
+  .container {
+    width: 50vh; /* Mantén el ancho para pantallas más grandes */
+  }
+}
+
 html {
   height: 100%;
 }
@@ -51,6 +64,7 @@ p {
   min-height: 45px;
   margin: 10px;
   text-align: center;
+  margin-top: 30px;  
 }
 .inputLog::placeholder {
   color: var(--naranja);
@@ -109,7 +123,7 @@ form {
 }
 section {
   flex-grow: 0;
-  background-color: #fff;
+  /* background-color: #fff; */
   justify-content: center;
   align-items: center;
 }
@@ -150,6 +164,7 @@ h2 {
   color: #353519;
 }
 h3{
+  margin-top: 0px;
   font-size: 12px bold;
   text-align: center;
   color: #77587C;
@@ -357,7 +372,7 @@ figure {
   align-items: center;
 }
 .inputPost {
-  margin: 10px;
+  /* margin: 10px; */
   border: 1px solid var(--naranjaclaro);
   border-radius: 10px;
   min-width: 250px;
@@ -373,14 +388,12 @@ span {
   justify-items: center;
   border: 0px, 0px, 20px, 0px;
 }
-
 .postsSection {
   margin-top: 0;
   overflow-y: scroll; /* Agregamos scroll vertical cuando el contenido exceda la altura de la secciÃ³n */
   /* max-height: calc(100vh - 200px); Establecemos una altura mÃ¡xima para los posts, dejando espacio para el header y el footer */
   font-size: 12px;
 }
-
 .postContainer {
   text-align: justify;
   padding: 0px 30px;
@@ -388,7 +401,7 @@ span {
   border: 1px solid #fff;
   border-radius: 10px;
   background-color: #edd4f375;
-
+}
 .btnPost{
   margin-left: 10px;
   margin-top: 0;
@@ -483,3 +496,17 @@ span {
 .nameProfile {
   color: #1669F2;
 }
+
+#iconSection {
+  background-color: #77587C;
+}
+
+.deleteIcon {
+width: 25px ;
+transform: translate(174px, 25px);
+}
+
+.editIcon {
+  width: 28px;
+  transform: translate(200px);
+  }
