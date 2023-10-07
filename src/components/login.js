@@ -18,18 +18,22 @@ function login(navigateTo) {
   const passAnchor = document.createElement('a');
   const homeImg = document.createElement('img');
   const mensaje = document.createElement('p');
+  const contentSection = document.createElement('section');
+  const formSection = document.createElement('section');
 
   section.className = 'container';
+  contentSection.className = 'contentSection';
+  formSection.className = 'formSection';
 
   logoImg.className = 'logoImg';
   logoImg.alt = 'Logo de la página';
-  logoImg.src = '../assets/logo.png';
+  logoImg.src = '../assets/logo.svg';
 
   btnLoginGoogle.className = 'btnGoogle';
 
   logoGoogle.id = 'iconGoogle';
   logoGoogle.alt = 'Logo de Google';
-  logoGoogle.src = '../assets/googleIcon.svg';
+  logoGoogle.src = '../assets/googleIcon.png';
 
   googleText.textContent = 'Inicia sesión con Google';
 
@@ -43,7 +47,7 @@ function login(navigateTo) {
 
   registerAnchor.textContent = '¿Nuevo usuario? Regístrate';
 
-  btnLogin.className = 'buttons'; // btn Login
+  btnLogin.className = 'buttons';
   btnLogin.textContent = 'Iniciar sesión';
 
   passAnchor.textContent = '¿Olvidaste tu contraseña?';
@@ -70,21 +74,26 @@ function login(navigateTo) {
     navigateTo('/register');
   });
 
-  btnLogin.addEventListener('click', async (event) => {
-    event.preventDefault();
-    const email = inputEmail.value;
-    const password = inputPass.value;
-    const user = await loginUser(email, password, mensaje);
-    if (user) {
-      navigateTo('/feed');
-    }
-  });
+  // Agregar event listener solo si el usuario no está registrado
+  if (localStorage.getItem('userRegistered') !== 'true') {
+    btnLogin.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const email = inputEmail.value;
+      const password = inputPass.value;
+      const user = await loginUser(email, password, mensaje);
+      if (user) {
+        navigateTo('/feed');
+      }
+    });
+  }
 
   passAnchor.addEventListener('click', () => {
     navigateTo('/forgotPassword');
   });
 
-  section.append(logoImg, btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
+  section.append(contentSection);
+  contentSection.append(logoImg, formSection);
+  formSection.append(btnLoginGoogle, hr, form, registerAnchor, btnLogin, passAnchor, homeImg);
   btnLoginGoogle.append(logoGoogle, googleText);
   form.append(inputEmail, inputPass, mensaje);
 
